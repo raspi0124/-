@@ -1,152 +1,154 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>ジャンケン</title>
-	<meta charset="utf-8">
-	<meta property="og:title" content="クソゲーです。">
-	<style type="text/css">
-		body {
-			text-align: center;
-		}
-		h1 {
-			font-size: 60px;
-		}
-		h2 {
-			font-size: 40px;
-		}
-		#PartnerHand {
-			font-size: 40px;
-		}
-		h3 {
-			display: inline-block;
-			width: 200px;
-			border-radius: 100px;
-		}
-		#rock {
-			background: rgb(61, 140, 209);
-		}
-		#scissors {
-			background: rgb(218, 49, 36);
-		}
-		#paper {
-			background: rgb(68, 152, 77);
-		}
-		h3 {
-			cursor:pointer;
-		}
-		h3 p {
-			font-size: 60px;
-		}
-		#rock:hover {
-			background: rgba(61, 140, 209, 0.8);
-		}
-		#scissors:hover {
-			background: rgba(218, 49, 36, 0.8);
-		}
-		#paper:hover {
-			background: rgba(68, 152, 77, 0.8);
-		}
-		#return {
-			position: absolute;
-			visibility: hidden;
-			top: 200px;
-			right: 0;
-			left: 0;
-			margin: auto;
-			background: cadetblue;
-			width: 400px;
-			color: aliceblue;
-			font-size: 40px;
-		}
-		#return span {
-			font-size: 20px;
-		}
-	</style>
-	<script type="text/javascript">
-		window.onload=function(){
-			document.getElementById('return').addEventListener('click',function(){
-				console.log("hello");
-				document.getElementById("PartnerHand").innerHTML = "?";
-				document.getElementById("return").style.visibility = "hidden";
-			});
-			document.getElementById('rock').addEventListener('click', function(){
-				judge(1);
-			});
-			document.getElementById('scissors').addEventListener('click', function(){
-				judge(2);
-			});
-			document.getElementById('paper').addEventListener('click', function(){
-				judge(3);
-			});
-			function judge(hand){
-				if(document.getElementById("PartnerHand").textContent == "?"){
-					let rand = Math.floor(Math.random() * (3)) + 1;
-					let partner_hand = "?";
-					let judge
-					if(rand==1){
-						partner_hand = "✊";
-					}else if(rand==2){
-						partner_hand = "✌️";
-					}else {
-						partner_hand = "🖐";
-					}
-					let partner = document.getElementById("PartnerHand");
-					partner.innerHTML = partner_hand;
-					judge = hand - rand;
-					console.log(judge);
-					if(judge == 0){
-						console.log("引き分け");
-						setTimeout( draw , 1000 );
-
-						
-					}else if(judge == -2 || judge == 1){
-						console.log("負け");
-						setTimeout( loss , 1000 );
-					}else {
-						console.log("勝ち");
-						setTimeout( win , 1000 );
-					}
-				}
-			}
-			function draw(){
-				let view = document.getElementById("return");
-				view.style.visibility = "visible";
-				view.innerHTML = "結果:引き分け<br><span id='again'>もう一度</span>";
-			}
-			function loss(){
-				let view = document.getElementById("return");
-				view.style.visibility = "visible";
-				view.innerHTML = "結果:負け<br><span id='again'>もう一度</span>";
-			}
-			function win(){
-				let view = document.getElementById("return");
-				view.style.visibility = "visible";
-				view.innerHTML = "結果:勝ち<br><span id='again'>もう一度</span>";
-			}
-		}
-	</script>
-</head>
-<body>
-	<h1>ジャンケン</h1>
-	<div id="partner">
-		<h2>相手</h2>
-		<div id="PartnerHand">?</div>
-	</div>
-	<div id="I">
-		<h2>自分</h2>
-		<p>自分の手を選んでね</p>
-		<h3 id="rock">
-			<p>✊</p>
-		</h3>
-		<h3 id="scissors">
-			<p>✌️</p>
-		</h3>
-		<h3 id="paper">
-			<p>🖐</p>
-		</h3>
-	</div>
-	<div id="return">
-		<p id="again"></p>
-	</div>
-</body>
+  <head>
+    <title>ジャンケン</title>
+    <meta charset="utf-8" />
+    <meta property="og:title" content="リアルなクソゲーです。" />
+    <style type="text/css">
+      body {
+        text-align: center;
+      }
+      h1 {
+        font-size: 60px;
+      }
+      h2 {
+        font-size: 40px;
+      }
+      #PartnerHand {
+        font-size: 40px;
+      }
+      h3 {
+        display: inline-block;
+        width: 200px;
+        border-radius: 100px;
+      }
+      #rock {
+        background: rgb(61, 140, 209);
+      }
+      #scissors {
+        background: rgb(218, 49, 36);
+      }
+      #paper {
+        background: rgb(68, 152, 77);
+      }
+      h3 {
+        cursor: pointer;
+      }
+      h3 p {
+        font-size: 60px;
+      }
+      #rock:hover {
+        background: rgba(61, 140, 209, 0.8);
+      }
+      #scissors:hover {
+        background: rgba(218, 49, 36, 0.8);
+      }
+      #paper:hover {
+        background: rgba(68, 152, 77, 0.8);
+      }
+      #return {
+        position: absolute;
+        visibility: hidden;
+        top: 200px;
+        right: 0;
+        left: 0;
+        margin: auto;
+        background: cadetblue;
+        width: 400px;
+        color: aliceblue;
+        font-size: 40px;
+      }
+      #return span {
+        font-size: 20px;
+      }
+    </style>
+    <script type="text/javascript">
+      window.onload = function () {
+        document
+          .getElementById("return")
+          .addEventListener("click", function () {
+            console.log("hello");
+            document.getElementById("PartnerHand").innerHTML = "?";
+            document.getElementById("return").style.visibility = "hidden";
+          });
+        document.getElementById("rock").addEventListener("click", function () {
+          judge(1);
+        });
+        document
+          .getElementById("scissors")
+          .addEventListener("click", function () {
+            judge(2);
+          });
+        document.getElementById("paper").addEventListener("click", function () {
+          judge(3);
+        });
+        function judge(hand) {
+          if (document.getElementById("PartnerHand").textContent == "?") {
+            let rand = Math.floor(Math.random() * 3) + 1;
+            let partner_hand = "?";
+            let judge;
+            if (hand == 2) {
+              partner_hand = "✊";
+            } else if (hand == 3) {
+              partner_hand = "✌️";
+            } else {
+              partner_hand = "🖐";
+            }
+            let partner = document.getElementById("PartnerHand");
+            partner.innerHTML = partner_hand;
+            judge = 1;
+            console.log(judge);
+            if (judge == 0) {
+              console.log("引き分け");
+              setTimeout(draw, 1000);
+            } else if (judge == -2 || judge == 1) {
+              console.log("負け");
+              setTimeout(loss, 1000);
+            } else {
+              console.log("勝ち");
+              setTimeout(win, 1000);
+            }
+          }
+        }
+        function draw() {
+          let view = document.getElementById("return");
+          view.style.visibility = "visible";
+          view.innerHTML = "結果:引き分け<br><span id='again'>もう一度</span>";
+        }
+        function loss() {
+          let view = document.getElementById("return");
+          view.style.visibility = "visible";
+          view.innerHTML = "結果:負け<br><span id='again'>もう一度</span>";
+        }
+        function win() {
+          let view = document.getElementById("return");
+          view.style.visibility = "visible";
+          view.innerHTML = "結果:勝ち<br><span id='again'>もう一度</span>";
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <h1>ジャンケン</h1>
+    <div id="partner">
+      <h2>相手</h2>
+      <div id="PartnerHand">?</div>
+    </div>
+    <div id="I">
+      <h2>自分</h2>
+      <p>自分の手を選んでね</p>
+      <h3 id="rock">
+        <p>✊</p>
+      </h3>
+      <h3 id="scissors">
+        <p>✌️</p>
+      </h3>
+      <h3 id="paper">
+        <p>🖐</p>
+      </h3>
+    </div>
+    <div id="return">
+      <p id="again"></p>
+    </div>
+  </body>
 </html>
